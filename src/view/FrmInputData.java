@@ -4,34 +4,43 @@
  * and open the template in the editor.
  */
 package view;
+
 import controller.AdminController;
 import controller.PenjualanController;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.PenjualanModel;
+
 /**
  *
  * @author Abo
  */
 public class FrmInputData extends javax.swing.JFrame {
-private PenjualanController control;
+
+    private PenjualanController control;
     private boolean status;
     private String proses;
     private List<PenjualanModel> listPenjualan;
     private String[] tabelHeader;
     private DefaultTableModel dtm;
     private int row;
-            int total = 0;
-    
-    public void TampilData(){
-        txtIdPeriode.getText();
-        
- 
-        
-    
+    int total = 0;
+    int idPeriod = 1;
+    int jumlahPenjualan = 0;
+    int jumlahPeriode = 0;
+    int kuadrat = 0;
+    int jumpenju = 0;
+    int sementara = 0;
+    float b = 0;
+
+    public void TampilData() {
+
+        txtIdPeriode.setText(String.valueOf(idPeriod));
+
     }
-    
+
     /**
      * Creates new form FrmInputData
      */
@@ -39,16 +48,18 @@ private PenjualanController control;
         initComponents();
         control = new PenjualanController(this);
         TampilData();
-        
-        tabelHeader = new String[]{"Id Periode","Jumlah Penjualan","Periode Penjualan"};
+
+        tabelHeader = new String[]{"Id Periode", "Jumlah Penjualan"};
         dtm = new DefaultTableModel(null, tabelHeader);
         tblData.setModel(dtm);
     }
-    public void refresh(){
+
+    public void refresh() {
         dtm = (DefaultTableModel) tblData.getModel();
         dtm.setRowCount(0);
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +87,25 @@ private PenjualanController control;
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lbl_periode = new javax.swing.JLabel();
-        txtPeriode = new javax.swing.JTextField();
+        txtHasil = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtKuadrat = new javax.swing.JTextField();
+        txtKuadratkaliJumlah = new javax.swing.JTextField();
+        txtJumlahPenjualan = new javax.swing.JTextField();
+        txtJumlahPeriode = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtSemKuadrat = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtSemPed = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtKuadratPeriode = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtB = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,7 +184,43 @@ private PenjualanController control;
 
         jLabel3.setText("klik tombol \"PROSES\"");
 
-        lbl_periode.setText("Periode Penjualan :");
+        lbl_periode.setText("hasil sem");
+
+        jLabel4.setText("P");
+
+        jLabel5.setText("J");
+
+        jLabel6.setText("K");
+
+        jLabel7.setText("K*J");
+
+        txtKuadrat.setEditable(false);
+
+        txtKuadratkaliJumlah.setEditable(false);
+
+        txtJumlahPenjualan.setEditable(false);
+
+        txtJumlahPeriode.setEditable(false);
+
+        jLabel8.setText("Kuadrat");
+
+        txtSemKuadrat.setText("jLabel9");
+
+        jLabel10.setText("X*Y");
+
+        txtSemPed.setText("jLabel9");
+
+        jLabel9.setText("KP");
+
+        txtKuadratPeriode.setText("jLabel11");
+
+        jLabel11.setText("b");
+
+        txtB.setText("jLabel12");
+
+        jLabel12.setText("a");
+
+        txtA.setText("jLabel13");
 
         javax.swing.GroupLayout panel_inputLayout = new javax.swing.GroupLayout(panel_input);
         panel_input.setLayout(panel_inputLayout);
@@ -166,85 +231,172 @@ private PenjualanController control;
                 .addComponent(lbl_logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_input_data)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_inputLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_cari)
-                .addGap(18, 18, 18)
-                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_catatan)
-                    .addGroup(panel_inputLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1))
-                    .addGroup(panel_inputLayout.createSequentialGroup()
-                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtIdPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panel_inputLayout.createSequentialGroup()
-                                    .addComponent(lbl_jml)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lbl_idPeriode))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
-                                .addComponent(lbl_periode)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(63, 63, 63))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSemKuadrat)
+                .addContainerGap())
             .addGroup(panel_inputLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_inputLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel2))
-                .addGap(140, 140, 140))
+                .addContainerGap(129, Short.MAX_VALUE))
             .addGroup(panel_inputLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(btn_proses, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_cleartbl)
                 .addGap(76, 76, 76))
+            .addGroup(panel_inputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_cari)
+                    .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_inputLayout.createSequentialGroup()
+                            .addComponent(jLabel12)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtA))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_inputLayout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addGap(30, 30, 30)
+                            .addComponent(txtB))))
+                .addGap(18, 18, 18)
+                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_inputLayout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel1))
+                            .addGroup(panel_inputLayout.createSequentialGroup()
+                                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtIdPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(panel_inputLayout.createSequentialGroup()
+                                            .addComponent(lbl_jml)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lbl_idPeriode))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
+                                        .addComponent(lbl_periode)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(63, 63, 63))
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addComponent(lbl_catatan)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtKuadratPeriode)
+                        .addContainerGap())
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panel_inputLayout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(140, 140, 140))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(panel_inputLayout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(37, 37, 37)
+                                            .addComponent(jLabel6))
+                                        .addComponent(jLabel7))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel_inputLayout.createSequentialGroup()
+                                            .addComponent(txtKuadrat, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel4))
+                                        .addGroup(panel_inputLayout.createSequentialGroup()
+                                            .addComponent(txtKuadratkaliJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel5)))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtJumlahPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtJumlahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(40, 40, 40)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtSemPed)
+                                .addContainerGap())))))
         );
         panel_inputLayout.setVerticalGroup(
             panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inputLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_logo)
+                            .addComponent(lbl_input_data)))
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtSemKuadrat))))
+                .addGap(4, 4, 4)
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_logo)
-                    .addComponent(lbl_input_data))
-                .addGap(18, 18, 18)
-                .addComponent(lbl_catatan)
+                    .addComponent(jLabel10)
+                    .addComponent(txtSemPed))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(27, 27, 27)
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_cari)
-                    .addComponent(lbl_idPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_periode))
-                .addGap(12, 12, 12)
-                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_jml)
-                    .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_input, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_catatan)
+                    .addComponent(jLabel9)
+                    .addComponent(txtKuadratPeriode)
+                    .addComponent(jLabel11)
+                    .addComponent(txtB))
+                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtA))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_proses)
-                    .addComponent(btn_cleartbl))
+                .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(txtKuadrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(txtKuadratkaliJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_cari)
+                            .addComponent(lbl_idPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_periode))
+                        .addGap(12, 12, 12)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_jml)
+                            .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_input, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_proses)
+                            .addComponent(btn_cleartbl)))
+                    .addGroup(panel_inputLayout.createSequentialGroup()
+                        .addComponent(txtJumlahPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtJumlahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -252,7 +404,9 @@ private PenjualanController control;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(panel_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,6 +423,18 @@ private PenjualanController control;
 
     private void btn_prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prosesActionPerformed
         // TODO add your handling code here:
+        
+        b = (((idPeriod-1)*jumpenju) - (jumlahPeriode*jumlahPenjualan));
+        float b2= (((idPeriod-1)*kuadrat)-sementara);
+        float hasilb = b/b2;
+        txtB.setText(String.valueOf(hasilb));
+        
+        float a = jumlahPenjualan - ((hasilb*jumlahPeriode));
+        float a1 = a/(idPeriod-1);
+        txtA.setText(String.valueOf(a1));
+        
+        float fix = a1+(hasilb*idPeriod);
+        txtHasil.setText(String.valueOf(fix));
     }//GEN-LAST:event_btn_prosesActionPerformed
 
     private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
@@ -280,17 +446,37 @@ private PenjualanController control;
 
     private void btn_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inputActionPerformed
         // TODO add your handling code here:
-        dtm.addRow(new Object[]{
-            txtIdPeriode.getText(), txtJumlah.getText(), txtPeriode.getText()});
+        txtIdPeriode.setText(String.valueOf(idPeriod));
+        jumlahPenjualan = jumlahPenjualan + Integer.parseInt(txtJumlah.getText());
+        jumlahPeriode = jumlahPeriode + idPeriod;
         
-        control.inputPenjualan(txtIdPeriode.getText(), txtJumlah.getText(), txtPeriode.getText());
-        boolean hasil = control.insertPenjualan();
-        if(hasil == false){
-            
-        }
-        txtIdPeriode.setText("");
+        int Semkuadrat =idPeriod*idPeriod;
+        int SemPenPed = idPeriod*Integer.parseInt(txtJumlah.getText());
+        kuadrat = kuadrat+Semkuadrat;
+        jumpenju = jumpenju+SemPenPed;
+        
+        
+        txtJumlahPeriode.setText(String.valueOf(jumlahPeriode));
+        txtJumlahPenjualan.setText(String.valueOf(jumlahPenjualan));
+        txtKuadrat.setText(String.valueOf(kuadrat));
+        txtKuadratkaliJumlah.setText(String.valueOf(jumpenju));
+        txtSemKuadrat.setText(String.valueOf(Semkuadrat));
+        txtSemPed.setText(String.valueOf(SemPenPed));
+        sementara = Integer.parseInt(txtJumlahPeriode.getText())*Integer.parseInt(txtJumlahPeriode.getText());
+        txtKuadratPeriode.setText(String.valueOf(sementara));
+        dtm.addRow(new Object[]{
+            txtIdPeriode.getText(), txtJumlah.getText()});
+
+//        control.inputPenjualan(txtIdPeriode.getText(), txtJumlah.getText(), txtPeriode.getText());
+//        boolean hasil = control.insertPenjualan();
+//        if(hasil == false){
+//            
+//        }
+//            String o = (String)dtm.getValueAt(1,1);
+//            int x = Integer.parseInt(o);
+//            txtHasil.setText(String.valueOf(x));
+        idPeriod = idPeriod + 1;
         txtJumlah.setText("");
-        txtPeriode.setText("");
     }//GEN-LAST:event_btn_inputActionPerformed
 
     private void txtJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJumlahActionPerformed
@@ -338,8 +524,17 @@ private PenjualanController control;
     private javax.swing.JButton btn_input;
     private javax.swing.JButton btn_proses;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_catatan;
     private javax.swing.JLabel lbl_idPeriode;
@@ -349,9 +544,18 @@ private PenjualanController control;
     private javax.swing.JLabel lbl_periode;
     private javax.swing.JPanel panel_input;
     private javax.swing.JTable tblData;
+    private javax.swing.JLabel txtA;
+    private javax.swing.JLabel txtB;
+    private javax.swing.JTextField txtHasil;
     private javax.swing.JTextField txtIdPeriode;
     private javax.swing.JTextField txtJumlah;
-    private javax.swing.JTextField txtPeriode;
+    private javax.swing.JTextField txtJumlahPenjualan;
+    private javax.swing.JTextField txtJumlahPeriode;
+    private javax.swing.JTextField txtKuadrat;
+    private javax.swing.JLabel txtKuadratPeriode;
+    private javax.swing.JTextField txtKuadratkaliJumlah;
+    private javax.swing.JLabel txtSemKuadrat;
+    private javax.swing.JLabel txtSemPed;
     // End of variables declaration//GEN-END:variables
 
     private void insertPenjualan() {
